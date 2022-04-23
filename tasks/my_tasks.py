@@ -1,11 +1,14 @@
 
+def is_natural_number(number: int) -> bool:
+    return isinstance(number, int) and number > 0
+
+
 def reverse_number(number: int) -> int:
     """Returns reversed number
 
     Keyword arguments:
     number -- integer, given number"""
-    assert isinstance(number, int), "Number should be integer"
-    assert number > 0, "Number should be greater than 0"
+    assert is_natural_number(number), "Number should be natural"
 
     return int(str(number)[::-1])
 
@@ -16,8 +19,7 @@ def is_3_in_square_of_number(number: int) -> bool:
     Keyword arguments:
     number -- integer, given number
     """
-    assert isinstance(number, int), "Number should be integer"
-    assert number > 0, "Number should be greater than 0"
+    assert is_natural_number(number), "Number should be natural"
 
     return '3' in str(number*number)
 
@@ -29,7 +31,8 @@ def get_number_with_largest_sum_of_divisors(a: int, b: int) -> int:
     a -- integers, start point of the loop
     b -- integers, end point of the loop
     """
-    assert isinstance(a, int) and isinstance(b, int), "Boundaries (a and b) should be integers"
+    assert is_natural_number(a), "Boundaries (a and b) should be integers"
+    assert is_natural_number(b), "Boundaries (a and b) should be integers"
     assert b >= a, "Second (b) argument should be bigger than first (a)"
 
     # List of all sums of divisors
@@ -50,8 +53,7 @@ def get_divisors_list(number: int) -> list:
     Keyword arguments:
     number -- integer, given number
     """
-    assert isinstance(number, int), "Number should be integer"
-    assert number > 0, "Number should be greater than 0"
+    assert is_natural_number(number), "Number should be natural"
 
     return [i for i in range(1, int(number/2) + 1) if number % i == 0] + [number]
 
